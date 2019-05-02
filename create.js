@@ -1,6 +1,6 @@
 import uuid from 'uuid'
 import * as dynamoDbLib from './libs/dynamodb-lib'
-import { success, failure } from './libs/response-lib';
+import { success, failure } from './libs/response-lib'
 
 export async function main(event, context, callback) {
   // Request body is passed in as a JSON encoded string in 'event.body'
@@ -21,8 +21,8 @@ export async function main(event, context, callback) {
       noteId: uuid.v1(),
       content: data.content,
       attachment: data.attachment,
-      createdAt: Date.now()
-    }
+      createdAt: Date.now(),
+    },
   }
 
   try {
@@ -30,6 +30,6 @@ export async function main(event, context, callback) {
     return success(params.Item)
   } catch (e) {
     console.log(e)
-    return failure({status: false})
+    return failure({ status: false })
   }
 }
